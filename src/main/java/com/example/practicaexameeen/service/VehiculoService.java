@@ -21,6 +21,7 @@ public class VehiculoService {
     }
 
     public Vehiculo registrar(VehiculoDTO payload) {
+
         if (vehiculoRepository.existsByPlaca(payload.getPlaca())) {
             throw new CustomException("Ya existe un vehiculo con esa placa");
         }
@@ -34,7 +35,7 @@ public class VehiculoService {
     }
 
     public Vehiculo desactivar(Long id) {
-        Vehiculo vehiculo = vehiculoRepository.findById(id)
+        Vehiculo vehiculo =vehiculoRepository.findById(id)
                 .orElseThrow(() -> new CustomException("El vehiculo no existe"));
 
         vehiculo.setActivo(false);

@@ -55,7 +55,8 @@ public class OrdenServicioService {
     }
 
     public List<OrdenServicio> listar() {
-        return ordenRepository.findAll();
+        List<OrdenServicio> listaCompleta= ordenRepository.findAll();
+        return listaCompleta ;
     }
 
     @Transactional
@@ -64,7 +65,7 @@ public class OrdenServicioService {
                 () -> new CustomException("no existe ")
         );
 
-        if(payload.getNuevoCosto()<0){
+        if(payload.getNuevoCosto() <0){
             throw new CustomException("El precio no puede ser menor a 0");
         }
 

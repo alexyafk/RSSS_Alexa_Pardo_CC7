@@ -33,7 +33,7 @@ public class VehiculoController {
     }
 
     @PutMapping("/{id}/desactivar")
-    public ResponseEntity<Vehiculo> desactivar(@PathVariable Long id) {
+    public ResponseEntity<Vehiculo> desactivar(@PathVariable @Valid Long id) {
         return ResponseEntity.status(200).body(servicio.desactivar(id));
     }
 }
